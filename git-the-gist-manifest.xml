@@ -13,11 +13,11 @@
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
-  <ProviderName>[Provider name]</ProviderName>
+  <ProviderName>[Zen3 InfoSolutions]</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="Git the Gist" />
-  <Description DefaultValue="[Outlook Add-in description]"/>
+  <Description DefaultValue="[Allows users to access their Gists on GitHub]"/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
@@ -65,7 +65,43 @@
     </Requirements>
     <Hosts>
       <Host xsi:type="MailHost">
-
+<ExtensionPoint xsi:type="MessageComposeCommandSurface">
+  <OfficeTab id="TabDefault">
+    <Group id="msgComposeCmdGroup">
+      <Label resid="groupLabel"/>
+      <Control xsi:type="Button" id="msgComposeInsertGist">
+        <Label resid="insertGistLabel"/>
+        <Supertip>
+          <Title resid="insertGistTitle"/>
+          <Description resid="insertGistDesc"/>
+        </Supertip>
+        <Icon>
+          <bt:Image size="16" resid="icon16"/>
+          <bt:Image size="32" resid="icon32"/>
+          <bt:Image size="80" resid="icon80"/>
+        </Icon>
+        <Action xsi:type="ShowTaskpane">
+          <SourceLocation resid="insertGistPaneUrl" />
+        </Action>
+      </Control>
+      <Control xsi:type="Button" id="msgComposeInsertDefaultGist">
+        <Label resid="insertDefaultGistLabel"/>
+        <Supertip>
+          <Title resid="insertDefaultGistTitle"/>
+          <Description resid="insertDefaultGistDesc"/>
+        </Supertip>
+        <Icon>
+          <bt:Image size="16" resid="icon16"/>
+          <bt:Image size="32" resid="icon32"/>
+          <bt:Image size="80" resid="icon80"/>
+        </Icon>
+        <Action xsi:type="ExecuteFunction">
+          <FunctionName>insertDefaultGist</FunctionName>
+        </Action>
+      </Control>
+    </Group>
+  </OfficeTab>
+</ExtensionPoint>
         <DesktopFormFactor>
           <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
           <FunctionFile resid="functionFile" />
