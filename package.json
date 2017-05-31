@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "scripts": {
     "start": "browser-sync start --config bsconfig.json",
-    "validate": "./node_modules/.bin/validate-office-addin"
+    "validate": "./node_modules/.bin/validate-office-addin",
+       "test": "jasmine"
   },
   "dependencies": {
     "core-js": "^2.4.1",
@@ -16,7 +17,8 @@
     "urijs": "^1.18.10"
   },
   "devDependencies": {
+    "@types/office-js": "^0.0.37",
     "browser-sync": "^2.18.5",
-    "@types/office-js": "^0.0.37"
+    "jasmine": "^2.6.0"
   }
 }
